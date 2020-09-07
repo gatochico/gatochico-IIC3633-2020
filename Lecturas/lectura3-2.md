@@ -18,4 +18,5 @@ En general, consideré esta lectura bastante interesante y que está bien ubicad
 
 ## Referencias
 Towards Trustworthy Recommender Systems: An Analysis of Attack Models and Algorithm Robustness. Mobasher, Burke, Bhaumik, Williams. (2007).
+
 Improving Recommendation Lists Through Topic Diversification. Ziegler, McNee, Konstan, Lausen (2005).

@@ -17,4 +17,5 @@ Para cerrar, el paper me parece un tema interesante, ya que hasta ahora habíamo
 ## Referencias:
 
 Long Tail: Why the Future of Business is Selling Less of More. Chris Anderson (2006).
+
 From Hits to Niches? Or how popular artists can bias music recommendation and discovery. Cano, Celma (2008).
