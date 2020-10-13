@@ -1,0 +1,21 @@
+# Comentario "Multi-Armed Recommender System Bandit Ensembles"
+
+El paper trata sobre los __Ensemble methods__, que consisten en tomar diversos modelos de sistemas recomendadores (Collaborative filtering, content based, etc.) y generar una recomendación en base a la predicción hecha por el mejor de todos los modelos. De esta forma, se busca compensar las limitaciones de ciertos modelos con las ventajas de otros, obteniendo en general mejores resultados.
+
+Un problema de estos __ensembles__ es la escalabilidad, ya que la necesidad de calcular los mejores parámetros para cada modelo, además de la necesidad de ejecutar todos por lo menos una vez. Esto genera que el tiempo de ejecución sea muy alto, y no sea apto para ser usado en usuarios reales, quienes no esperarán una gran capacidad de tiempo para que el sistema genere sus recomendaciones. 
+
+Para contrarrestar este problema, el paper presenta los __Multi-Armed Recommender System Bandit Ensembles__. Estos consisten en, en vez de ejecutar todos los modelos para realizar una recomendación, toma cada algoritmo del ensemble como un "brazo" y elige para una recomendación qué "brazo" usará para generar una recomendación dependiendo de su desempeño pasado. De esta forma, un brazo que consistentemente de respuestas poco satisfactorias será usado menos que uno que sí de respuestas satisfactorias frecuentemente. 
+
+Tras experimentos realizados, se muestra que esta implementación es efectiva en producción (ya que constantemente se va actualizando cuál es el mejor modelo o brazo) y reduce el tiempo de cómputo al no ejecutar todos los brazos del ensemble.
+
+La propuesta del paper me parece interesante, y tiene sentido considerando todo lo visto hasta ahora en el curso: se han mostrado una variedad de algoritmos de recomendación, siempre recalcando las ventajas y falencias de cada una. Por lo tanto, se deben aprovechar estas ventajas para suplir las falencias de otros modelos. Además, tiene sentido que un sistema recomendador evolucione a través del tiempo, ya sea por el tipo de información que recibe u otros factores, por lo que una herramienta que permita dinámicamente ir variando el mejor modelo a utilizar en un punto determinado en el tiempo ahorra tiempo y permite mantener actualizado al sistema de forma automática.
+
+Personalmente, como crítica dejaría la poca cantidad de 'brazos' que posee el sistema (solo 3, 2 del tipo CB y uno del tipo Most Popular). Siento que esto no es tan representativo, y el haber agregado múltiples experimentos con más o menos brazos o combinaciones de ellas en cada caso podría haber aportado a la conclusión final.
+
+Al ser este artículo bastante nuevo, se dificulta más el encontrar otros artículos que busquen seguir esa línea de investigación. Lo más reciente que encontré es este artículo publicado en la conferencia **RecSys '20**, llamado **"Contextual Meta-Bandit for Recommender Systems Selection" (2020)** el cual propone un ensemble que funciona de forma similar al de este escrito, sin embargo también toma en cuenta como factor al momento de decidir qué algoritmo usar el contexto de la recomendación y la situación. De esta forma, este modelo logra adaptarse a la variación en intereses del usuario. A pesar de que no se compara directamente con el método de este paper, el resultado de ese artículo también tiene rendimiento superior a los algoritmos por sí solos, y a un ensemble de ellos. 
+
+Siento que la adición de contexto a la recomendación era un paso siguiente lógico a lo propuesto por este paper, por lo que quedo con la duda de cuáles serían los resultados al comparar ambos métodos. 
+
+## Referencias
+
+Marlesson R. O. Santana, Luckeciano C. Melo, Fernando H. F. Camargo, Bruno Brandão, Anderson Soares, Renan M. Oliveira, and Sandor Caetano. 2020. Contextual Meta-Bandit for Recommender Systems Selection. In Fourteenth ACM Conference on Recommender Systems (RecSys '20). Association for Computing Machinery, New York, NY, USA, 444–449. DOI:https://doi.org/10.1145/3383313.3412209
